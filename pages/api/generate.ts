@@ -7,7 +7,7 @@ if (!process.env.OPENAI_API_KEY) {
 export const config = {
   runtime: "edge",
 };
-
+console.log("lorem ihnnh nnhn");
 const handler = async (req: Request): Promise<Response> => {
   const { prompt } = (await req.json()) as {
     prompt?: string;
