@@ -36,8 +36,13 @@ const handler = async (req: Request): Promise<Response> => {
     n: 1,
   };
 
-  const stream = await OpenAIStream(payload);
-  return new Response(stream);
+  try {
+    const stream = await OpenAIStream(payload);
+    return new Response(stream);
+  } catch (error) {
+    console.error("Error fetching response from OpenAI:", error);
+    return new Response("Failed to generate response from OpenAI", { status: 500 });
+  }
 };
 
 export default handler;
